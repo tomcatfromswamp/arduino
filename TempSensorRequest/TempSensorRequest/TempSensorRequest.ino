@@ -41,42 +41,52 @@ void loop() {
 void displaySensorsData(int x){
   float t = 0.0;
   float h = 0.0;
+  int id = 0;
   switch(x){
     case 50: { 
       t = dht2.readTemperature();
       h = dht2.readHumidity();
+      id = 2;
       break;
     }
     case 51: { 
       t = dht3.readTemperature();
       h = dht3.readHumidity();
+      id = 3;
       break;
     }
     case 52: { 
       t = dht4.readTemperature();
       h = dht4.readHumidity();
+      id = 4;
       break;
     }
     case 53: { 
       t = dht5.readTemperature();
       h = dht5.readHumidity();
+      id = 5;
       break;
     }
     case 54: { 
       t = dht6.readTemperature();
       h = dht6.readHumidity();
+      id = 6;
       break;
     }
     case 55: { 
       t = dht7.readTemperature();
       h = dht7.readHumidity();
+      id = 7;
       break;
     }
   }
       if (isnan(t) || isnan(h)) {
-        Serial.println("Sensor isn`t connect to arduino!");
+        Serial.print(id);
+        Serial.println(",0.0,0.0");
         return;
       } else {
+        Serial.print(id);
+        Serial.print(",");
         Serial.print(t);
         Serial.print(",");
         Serial.println(h);
